@@ -20,15 +20,29 @@ def execute(ast):
             value = node["value"]
 
             if value in variables:
-                print(variables[value])
-
+                print(f"💖 {variables[value]}")
             else:
-                print(value)
+                print(f"💖 {value}")
 
         # Addition Print
         elif node["type"] == "print_add":
 
-            left = variables[node["left"]]
-            right = variables[node["right"]]
+            try:
 
-            print(left + right)
+                left = variables[node["left"]]
+                right = variables[node["right"]]
+
+                print(f"✨ {left + right}")
+
+            except KeyError as e:
+
+                print(
+                    f"😭 Behen, '{e.args[0]}' naam ka variable nahi mila."
+                )
+
+            except Exception:
+
+                print(
+                    "🚩 Behen, kuch toh gadbad ho gayi addition karte waqt."
+                )
+
