@@ -20,12 +20,26 @@ def parse(tokens):
         # Print statement
         elif tokens[i] == "bolo":
 
-            ast.append({
-                "type": "print",
-                "value": tokens[i + 1]
-            })
+            # Addition expression
+            if i + 3 < len(tokens) and tokens[i + 2] == "+":
 
-            i += 2
+                ast.append({
+                    "type": "print_add",
+                    "left": tokens[i + 1],
+                    "right": tokens[i + 3]
+                })
+
+                i += 4
+
+            # Normal print
+            else:
+
+                ast.append({
+                    "type": "print",
+                    "value": tokens[i + 1]
+                })
+
+                i += 2
 
         else:
             i += 1

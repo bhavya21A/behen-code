@@ -14,7 +14,7 @@ def execute(ast):
 
             variables[node["name"]] = value
 
-        # Print Statement
+        # Normal Print
         elif node["type"] == "print":
 
             value = node["value"]
@@ -24,3 +24,11 @@ def execute(ast):
 
             else:
                 print(value)
+
+        # Addition Print
+        elif node["type"] == "print_add":
+
+            left = variables[node["left"]]
+            right = variables[node["right"]]
+
+            print(left + right)
